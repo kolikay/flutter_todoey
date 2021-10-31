@@ -1,11 +1,13 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, use_key_in_widget_constructors, unused_local_variable, must_be_immutable
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todoey/models/task_data.dart';
 
 class AddTaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    late String newTaskTitle;
+    String newTaskTitle = '';
+
     return Container(
       color: const Color(0xff757575),
       child: Container(
@@ -35,7 +37,8 @@ class AddTaskScreen extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              Provider.of(context).addTask(newTaskTitle);
+              Provider.of<TaskData>(context,listen: false).addTask(newTaskTitle);
+              print('$newTaskTitle  wahala');
               Navigator.pop(context);
             },
           ),
